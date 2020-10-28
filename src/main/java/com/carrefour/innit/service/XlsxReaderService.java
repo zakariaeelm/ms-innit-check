@@ -19,11 +19,11 @@ import java.util.List;
 
 @Service
 @Slf4j
-public class XlsxReaderService {
+public class  XlsxReaderService {
 
-    private final int product_count;
+    private final String product_count;
 
-    public XlsxReaderService(@Value("api.carrefour.prod.innit.count") int product_count) {
+    public XlsxReaderService(@Value("${api.carrefour.prod.innit.count}")String product_count) {
         this.product_count = product_count;
     }
 
@@ -42,7 +42,7 @@ public class XlsxReaderService {
         List<Product> productList = new ArrayList<>();
         Product product;
 
-        int count = product_count;
+        int count = Integer.parseInt(product_count);
 
         while(rowIt.hasNext() && count > 0){
             count--;
